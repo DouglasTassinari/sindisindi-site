@@ -3,168 +3,252 @@
   "mes": "Abril",
   "nome": "Associação do Polo de Informática de Caxias do Sul",
   "arquivo": "assets/acordos/abril/polo-informatica-caxias.pdf",
-  "kb": 119
+  "kb": 119,
+  "vigencia": "01/04/2024 a 31/03/2025",
+  "ano": 2024,
+  "periodo": "2024/2025"
  },
  {
   "mes": "Abril",
   "nome": "OCERGS",
   "arquivo": "assets/acordos/abril/ocergs.pdf",
-  "kb": 137
+  "kb": 137,
+  "vigencia": "01/04/2024 a 31/03/2025",
+  "ano": 2024,
+  "periodo": "2024/2025"
  },
  {
   "mes": "Abril",
   "nome": "Portuários",
   "arquivo": "assets/acordos/abril/portuarios.pdf",
-  "kb": 136
+  "kb": 136,
+  "vigencia": "01/04/2024 a 31/03/2025",
+  "ano": 2024,
+  "periodo": "2024/2025"
  },
  {
   "mes": "Abril",
   "nome": "AFISVEC",
   "arquivo": "assets/acordos/abril/afisvec.pdf",
-  "kb": 84
+  "kb": 84,
+  "vigencia": "01/04/2024 a 31/03/2025",
+  "ano": 2024,
+  "periodo": "2024/2025"
  },
  {
   "mes": "Agosto",
   "nome": "SEEB Guaporé",
   "arquivo": "assets/acordos/agosto/seeb-guapore.pdf",
-  "kb": 965
+  "kb": 965,
+  "vigencia": "01/08/2022 a 31/07/2024",
+  "ano": 2022,
+  "periodo": "2022/2024"
  },
  {
   "mes": "Agosto",
   "nome": "Sindilojas Caxias do Sul",
   "arquivo": "assets/acordos/agosto/sindilojas-caxias-do-sul.pdf",
-  "kb": 119
+  "kb": 119,
+  "vigencia": "01/08/2024 a 31/07/2025",
+  "ano": 2024,
+  "periodo": "2024/2025"
  },
  {
   "mes": "Dezembro",
   "nome": "SENGE/RS (2024–2025)",
   "arquivo": "assets/acordos/dezembro/senge-rs-20242025.pdf",
-  "kb": 140
+  "kb": 140,
+  "vigencia": "01/12/2024 a 30/11/2025",
+  "ano": 2024,
+  "periodo": "2024/2025"
  },
  {
   "mes": "Janeiro",
   "nome": "Bancários Vale do Paranhana (ACT)",
   "arquivo": "assets/acordos/janeiro/bancarios-vale-do-paranhana-act.pdf",
-  "kb": 101
+  "kb": 101,
+  "vigencia": "01/01/2024 a 31/12/2024",
+  "ano": 2024,
+  "periodo": "2024"
  },
  {
   "mes": "Janeiro",
   "nome": "AACRT",
   "arquivo": "assets/acordos/janeiro/aacrt.pdf",
-  "kb": 157
+  "kb": 157,
+  "vigencia": "01/01/2025 a 31/12/2025",
+  "ano": 2025,
+  "periodo": "2025"
  },
  {
   "mes": "Janeiro",
   "nome": "Vale do Paranhana (acordo registrado)",
   "arquivo": "assets/acordos/janeiro/vale-paranhana-acordo-registrado.pdf",
-  "kb": 101
+  "kb": 101,
+  "vigencia": "01/01/2025 a 31/12/2026",
+  "ano": 2025,
+  "periodo": "2025/2026"
  },
  {
   "mes": "Julho",
   "nome": "ASSUFRGS",
   "arquivo": "assets/acordos/julho/assufrgs.pdf",
-  "kb": 11463
+  "kb": 11463,
+  "vigencia": "",
+  "ano": 2024,
+  "periodo": "2024/2026"
  },
  {
   "mes": "Julho",
   "nome": "SIMPA",
   "arquivo": "assets/acordos/julho/simpa.pdf",
-  "kb": 4649
+  "kb": 4649,
+  "vigencia": "01/07/2024 a 30/06/2025",
+  "ano": 2024,
+  "periodo": "2024/2025"
  },
  {
   "mes": "Julho",
   "nome": "SINDIÁGUA (2023–2025)",
   "arquivo": "assets/acordos/julho/sindiagua-20232025.pdf",
-  "kb": 164
+  "kb": 164,
+  "vigencia": "01/07/2023 a 30/06/2025",
+  "ano": 2023,
+  "periodo": "2023/2025"
  },
  {
   "mes": "Julho",
   "nome": "SINTTEL (termo aditivo)",
   "arquivo": "assets/acordos/julho/sinttel-termo-aditivo.pdf",
-  "kb": 2783
+  "kb": 2783,
+  "vigencia": "01/07/2024 a 30/06/2025",
+  "ano": 2024,
+  "periodo": "2024/2025"
  },
  {
   "mes": "Junho",
   "nome": "SINAPERS",
   "arquivo": "assets/acordos/junho/sinapers.pdf",
-  "kb": 4904
+  "kb": 4904,
+  "vigencia": "01/06/2024 a 31/05/2025",
+  "ano": 2024,
+  "periodo": "2024/2025"
  },
  {
   "mes": "Maio",
   "nome": "Associação dos Ferroviários",
   "arquivo": "assets/acordos/maio/associacao-dos-ferroviarios.pdf",
-  "kb": 105
+  "kb": 105,
+  "vigencia": "01/05/2024 a 30/04/2025",
+  "ano": 2024,
+  "periodo": "2024/2025"
  },
  {
   "mes": "Maio",
   "nome": "CIC Caxias",
   "arquivo": "assets/acordos/maio/cic-caxias.pdf",
-  "kb": 4490
+  "kb": 4490,
+  "vigencia": "01/05/2024 a 30/04/2025",
+  "ano": 2024,
+  "periodo": "2024/2025"
  },
  {
   "mes": "Maio",
   "nome": "CPERS",
   "arquivo": "assets/acordos/maio/cpers.pdf",
-  "kb": 6477
+  "kb": 6477,
+  "vigencia": "01/05/2024 a 30/04/2025",
+  "ano": 2024,
+  "periodo": "2024/2025"
  },
  {
   "mes": "Maio",
   "nome": "Metalúrgicos de Porto Alegre",
   "arquivo": "assets/acordos/maio/metalurgicos-de-porto-alegre.pdf",
-  "kb": 7031
+  "kb": 7031,
+  "vigencia": "01/05/2024 a 30/04/2026",
+  "ano": 2024,
+  "periodo": "2024/2026"
  },
  {
   "mes": "Maio",
   "nome": "SINFEAL",
   "arquivo": "assets/acordos/maio/sinfeal.pdf",
-  "kb": 108
+  "kb": 108,
+  "vigencia": "01/05/2024 a 30/04/2025",
+  "ano": 2024,
+  "periodo": "2024/2025"
  },
  {
   "mes": "Maio",
   "nome": "SINPRO",
   "arquivo": "assets/acordos/maio/sinpro.pdf",
-  "kb": 217
+  "kb": 217,
+  "vigencia": "01/05/2024 a 30/04/2025",
+  "ano": 2024,
+  "periodo": "2024/2025"
  },
  {
   "mes": "Maio",
   "nome": "SINTRAJUFE",
   "arquivo": "assets/acordos/maio/sintrajufe.pdf",
-  "kb": 146
+  "kb": 146,
+  "vigencia": "01/05/2024 a 30/04/2025",
+  "ano": 2024,
+  "periodo": "2024/2025"
  },
  {
   "mes": "Março",
   "nome": "SINTEP Vales",
   "arquivo": "assets/acordos/marco/sintep-vales.pdf",
-  "kb": 154
+  "kb": 154,
+  "vigencia": "01/03/2024 a 28/02/2025",
+  "ano": 2024,
+  "periodo": "2024/2025"
  },
  {
   "mes": "Novembro",
   "nome": "SEMAPI (2024–2025)",
   "arquivo": "assets/acordos/novembro/semapi-20242025.pdf",
-  "kb": 165
+  "kb": 165,
+  "vigencia": "01/11/2024 a 31/10/2025",
+  "ano": 2024,
+  "periodo": "2024/2025"
  },
  {
   "mes": "Novembro",
   "nome": "SINDPPD",
   "arquivo": "assets/acordos/novembro/sindppd.pdf",
-  "kb": 155
+  "kb": 155,
+  "vigencia": "01/11/2024 a 31/10/2025",
+  "ano": 2024,
+  "periodo": "2024/2025"
  },
  {
   "mes": "Setembro",
   "nome": "FECONTÁBIL",
   "arquivo": "assets/acordos/setembro/fecontabil.pdf",
-  "kb": 2837
+  "kb": 2837,
+  "vigencia": "01/09/2024 a 31/08/2025",
+  "ano": 2024,
+  "periodo": "2024/2025"
  },
  {
   "mes": "Setembro",
   "nome": "SINDIPETRO",
   "arquivo": "assets/acordos/setembro/sindipetro.pdf",
-  "kb": 4593
+  "kb": 4593,
+  "vigencia": "01/09/2024 a 31/08/2025",
+  "ano": 2024,
+  "periodo": "2024/2025"
  },
  {
   "mes": "Setembro",
   "nome": "STIPANPA",
   "arquivo": "assets/acordos/setembro/stipanpa.pdf",
-  "kb": 3336
+  "kb": 3336,
+  "vigencia": "01/09/2024 a 31/08/2025",
+  "ano": 2024,
+  "periodo": "2024/2025"
  }
 ]

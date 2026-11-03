@@ -81,7 +81,9 @@ def render_acordos(s):
     if not f.exists() or "<!-- @acordos -->" not in s:
         return s
     docs = json.loads(f.read_text(encoding="utf-8"))
-    docs.sort(key=lambda d: (MESES.index(d["mes"]), d["nome"].lower()))
+    docs.sort(key=lambda d: (-d["ano"], MESES.index(d["mes"]), d["nome"].lower()))
+    anos = sorted({d["ano"] for d in docs}, reverse=True)
+    ychips = "".join(f'<button type="button" class="chip" data-y="{a}">{a}</button>' for a in anos)
     usados = [m for m in MESES if any(d["mes"] == m for d in docs)]
     chips = "".join(f'<button type="button" class="chip" data-m="{m}">{m}</button>' for m in usados)
     cards = []
@@ -90,13 +92,15 @@ def render_acordos(s):
         tam = f"{mb:.1f} MB".replace(".", ",") if mb >= 1 else f'{d["kb"]} KB'
         nome = html.escape(d["nome"])
         cards.append(
-            f'<article class="card ac-card" data-m="{d["mes"]}" data-n="{nome} {d["mes"]}">'
-            f'<div class="tag">Data-base · {d["mes"]}</div><h3>{nome}</h3>'
-            f'<p>PDF · {tam}</p>'
+            f'<article class="card ac-card" data-m="{d["mes"]}" data-y="{d["ano"]}" data-n="{nome} {d["mes"]} {d["periodo"]}">'
+            f'<div class="tag">Acordo {d["periodo"]} · Data-base {d["mes"]}</div><h3>{nome}</h3>'
+            f'<p>{("Vigência: " + d["vigencia"] + " · ") if d.get("vigencia") else ""}PDF · {tam}</p>'
             f'<a class="btn" href="{d["arquivo"]}" target="_blank" rel="noopener">Abrir PDF</a> '
             f'<a class="btn light" href="{d["arquivo"]}" download>Baixar</a></article>')
     s = re.sub(r"(<!-- @acordos -->).*?(<!-- @end acordos -->)",
                lambda m: m.group(1) + chr(10) + chr(10).join(cards) + chr(10) + m.group(2), s, flags=re.S)
+    s = re.sub(r"(<!-- @acordos-ychips -->).*?(<!-- @end acordos-ychips -->)",
+               lambda m: m.group(1) + ychips + m.group(2), s, flags=re.S)
     s = re.sub(r"(<!-- @acordos-chips -->).*?(<!-- @end acordos-chips -->)",
                lambda m: m.group(1) + chips + m.group(2), s, flags=re.S)
     return s
