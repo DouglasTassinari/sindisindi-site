@@ -9,3 +9,20 @@
 .sind-chat-actions{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 10px}.sind-chat-actions a{background:#16834b;color:#fff;border-color:#16834b;text-align:center}
 .sind-chat-form{display:flex;padding:12px;border-top:1px solid #e2e9ed;gap:8px;background:#fff}.sind-chat-form input{min-width:0;flex:1;border:1px solid #ccdce3;border-radius:10px;padding:12px 13px;font-size:13px;outline:none}.sind-chat-form input:focus{border-color:#1686ad;box-shadow:0 0 0 3px #1686ad18}.sind-chat-form button{width:43px;border:0;border-radius:10px;background:#087fa9;color:#fff;font-size:19px;font-weight:700;cursor:pointer}.sind-chat-foot{padding:8px 12px;color:#73858e;font-size:9px;line-height:1.4;border-top:1px solid #edf1f3;background:#fff}
 @media(max-width:600px){.sind-wa-float{right:12px;bottom:13px;padding:11px 14px;font-size:12px}.sind-chat-launch{right:12px;bottom:68px;padding:12px 15px;font-size:12px}.sind-chat-panel{right:8px;bottom:124px;width:calc(100vw - 16px);height:min(650px,calc(100dvh - 145px));border-radius:16px}.sind-chat-messages{padding:14px 12px}}
+
+/* Ajustes de sobreposição e teclado em celulares */
+#sind-assistant{position:relative;z-index:10000}
+.sind-chat-backdrop{position:fixed;inset:0;z-index:9998;background:rgba(7,27,38,.48);backdrop-filter:blur(2px)}
+.sind-chat-panel{z-index:10000!important;isolation:isolate;background:#fff!important;opacity:1!important;box-sizing:border-box!important}
+.sind-chat-head,.sind-chat-messages,.sind-chat-form,.sind-chat-foot{flex-shrink:0}
+.sind-chat-messages{flex:1 1 auto;min-height:0}
+.sind-chat-form input{width:100%;min-height:44px}
+@media(max-width:600px){
+  .sind-chat-panel{left:8px!important;right:8px!important;top:10px!important;bottom:calc(var(--sind-vv-bottom, 0px) + 10px)!important;width:auto!important;height:auto!important;max-height:calc(var(--sind-vv-height, 100dvh) - 20px)!important;border-radius:16px!important}
+  .sind-chat-head{padding:13px 14px!important}
+  .sind-chat-head strong{font-size:13px!important}
+  .sind-chat-messages{padding:12px!important}
+  .sind-chat-foot{font-size:9px!important}
+  .sind-chat-backdrop{z-index:9997}
+  .sind-chat-panel{z-index:9999!important}
+}
