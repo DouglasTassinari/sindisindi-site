@@ -97,3 +97,42 @@
  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&panel.classList.contains("is-open"))clear.click();});
  document.addEventListener("click",e=>{if(!section.contains(e.target))close();});
 })();
+
+// Barra de acessibilidade, atalhos e "migalhas de pão" (padrão gov.br)
+(() => {
+ const html=document.documentElement,body=document.body;
+ const store={get:k=>{try{return localStorage.getItem(k);}catch{return null;}},set:(k,v)=>{try{localStorage.setItem(k,v);}catch{}}};
+ const main=document.querySelector("main");
+ if(main&&!main.id){main.id="conteudo";main.tabIndex=-1;}
+ const header=document.querySelector("header");
+ const nav0=document.querySelector("header nav");if(nav0&&!nav0.id)nav0.id="main-navigation";
+ const bar=document.createElement("div");bar.className="gov-bar";
+ bar.innerHTML='<div class="gov-links"><a href="#conteudo">Ir para o conteúdo <kbd>Alt+1</kbd></a><a href="#site-search-input">Ir para a busca <kbd>Alt+2</kbd></a><a href="#main-navigation">Ir para o menu <kbd>Alt+3</kbd></a></div>'+
+  '<div class="gov-tools" role="group" aria-label="Acessibilidade"><button type="button" data-a="dec" aria-label="Diminuir letras">A−</button><button type="button" data-a="inc" aria-label="Aumentar letras">A+</button><button type="button" data-a="hc" aria-pressed="false">Alto contraste</button><a href="https://wa.me/5551998843247" target="_blank" rel="noopener">WhatsApp (51) 99884-3247</a></div>';
+ const topline=document.querySelector(".topline");
+ (topline||header).before(bar);
+ let z=parseFloat(store.get("sindi_zoom")||"1")||1;
+ const applyZoom=()=>{body.style.zoom=z===1?"":z;};
+ const hc=store.get("sindi_hc")==="1";html.classList.toggle("hc",hc);
+ bar.querySelector('[data-a="hc"]').setAttribute("aria-pressed",hc);
+ applyZoom();
+ bar.addEventListener("click",e=>{
+  const btn=e.target.closest("button");const a=btn&&btn.dataset.a;if(!a)return;
+  if(a==="inc")z=Math.min(1.3,+(z+.1).toFixed(2));
+  if(a==="dec")z=Math.max(.9,+(z-.1).toFixed(2));
+  if(a==="hc"){const on=!html.classList.contains("hc");html.classList.toggle("hc",on);btn.setAttribute("aria-pressed",on);store.set("sindi_hc",on?"1":"0");}
+  else{store.set("sindi_zoom",String(z));applyZoom();}
+ });
+ document.addEventListener("keydown",e=>{
+  if(e.altKey&&["1","2","3"].includes(e.key)){e.preventDefault();const t={1:"#conteudo",2:"#site-search-input",3:"#main-navigation"}[e.key];const el=document.querySelector(t);if(el){el.scrollIntoView();if(el.focus)el.focus();}}
+ });
+ const h1=document.querySelector("main h1");
+ if(h1&&!/(\/|index\.html)$/.test(location.pathname)){
+  const nav=document.createElement("nav");nav.className="crumbs";nav.setAttribute("aria-label","Você está em");
+  const a1=document.createElement("a");a1.href="index.html";a1.textContent="Início";
+  const sp=document.createElement("span");sp.textContent="›";
+  const cur=document.createElement("span");cur.setAttribute("aria-current","page");cur.style.margin="0";cur.textContent=h1.textContent.length>70?h1.textContent.slice(0,67)+"…":h1.textContent;
+  nav.append(a1,sp,cur);
+  const after=document.querySelector(".site-search");(after||header).after(nav);
+ }
+})();
