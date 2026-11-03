@@ -1,6 +1,6 @@
 (() => {
  const pages=[
-  ["Início","index.html"],["O sindicato","sindicato.html"],["Notícias","noticias.html"],["Direitos do trabalhador","direitos.html"],["Acordos coletivos","acordos.html"],["Convênios","convenios.html"],["Publicações","publicacoes.html"],["Contato","contato.html"],["História do sindicato","sindisindi-37-anos.html"],["Saúde no trabalho e acordos","e-sindicatario-saude-acordos.html"],["Inglês no trabalho","ingles-no-trabalho.html"],["Questionário de saúde","questionario-saude.html"],["Ponto facultativo","ponto-facultativo-copa.html"],["Convenções da OIT","oit-igualdade-violencia.html"],["ACT CPERS","act-cpers.html"],["ACT CUT-RS","act-cut-rs.html"],["Acordo SENGE-RS","acordo-senge-rs.html"],["Homologações","homologacoes.html"]
+  ["Início","index.html"],["O sindicato","sindicato.html"],["Notícias","noticias.html"],["Direitos do trabalhador","direitos.html"],["Acordos coletivos","acordos.html"],["Convênios","convenios.html"],["Publicações","publicacoes.html"],["Contato","contato.html"],["História do sindicato","sindisindi-37-anos.html"],["Saúde no trabalho e acordos","e-sindicatario-saude-acordos.html"],["Inglês no trabalho","ingles-no-trabalho.html"],["Questionário de saúde","questionario-saude.html"],["Ponto facultativo","ponto-facultativo-copa.html"],["Convenções da OIT","oit-igualdade-violencia.html"],["ACT CPERS","act-cpers.html"],["ACT CUT-RS","act-cut-rs.html"],["Acordo SENGE-RS","acordo-senge-rs.html"],["Homologações","homologacoes.html"],["Dúvidas frequentes","faq.html"]
  ];
  const header=document.querySelector("header");
  if(!header||document.getElementById("site-search-form"))return;
@@ -144,4 +144,7 @@
  const p=document.createElement("p");p.className="foot-hours";
  p.innerHTML="<strong>Horário de funcionamento:</strong> segunda a quinta, das 8h às 12h e das 13h às 17h · sexta, das 8h às 12h";
  box.append(p);
+ const soc=document.createElement("p");soc.className="foot-social";
+ soc.innerHTML='<strong>Siga o SINDISINDI/RS:</strong> <a href="https://www.facebook.com/sindisindirs.sindicato" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.instagram.com/sindisindi_rs/" target="_blank" rel="noopener">Instagram</a>';
+ box.append(soc);
 })();

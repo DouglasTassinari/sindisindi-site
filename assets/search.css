@@ -103,3 +103,19 @@ html.hc img{filter:grayscale(1) contrast(1.2)}
 .hours-inner .button{margin-left:auto}
 .foot-hours{margin-top:10px;font-size:14px}
 html.hc .gov-hours{background:#000!important}
+
+/* FAQ, mapa e redes */
+.faq{display:grid;gap:12px}
+.faq-item{background:#fff;border:1px solid #d9e5ea;border-radius:12px;overflow:hidden;transition:box-shadow .25s ease,border-color .25s ease}
+.faq-item[open]{border-color:#0789b7;box-shadow:0 10px 26px #123d5218}
+.faq-item summary{cursor:pointer;list-style:none;padding:18px 54px 18px 20px;font-weight:700;color:#123d52;font-size:17px;position:relative}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary:after{content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:26px;color:#0789b7;transition:transform .25s ease}
+.faq-item[open] summary:after{transform:translateY(-50%) rotate(45deg)}
+.faq-a{padding:0 20px 18px;color:#3f5966;line-height:1.6;animation:faqIn .35s ease}
+.faq-a p{margin:0}.faq-a a{color:#075a7a;font-weight:700}
+@keyframes faqIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.map-box{margin-top:14px;border-radius:14px;overflow:hidden;border:1px solid #d9e5ea;aspect-ratio:16/7;min-height:280px;background:#e8eef2}
+.map-box iframe{width:100%;height:100%;border:0;display:block}
+.foot-social{margin-top:6px;font-size:14px}.foot-social a{text-decoration:underline}
+@media(prefers-reduced-motion:reduce){.faq-a{animation:none}.faq-item summary:after{transition:none}}
