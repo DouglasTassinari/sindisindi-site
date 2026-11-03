@@ -169,3 +169,23 @@ html body .article-hero{min-height:0!important;padding:56px 0 44px!important}
 .article-more span{display:block;font-weight:400;font-size:13px;color:#647987}
 @media(max-width:1000px){.news-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:700px){.news-list{grid-template-columns:1fr}.article-body{font-size:17px}.article-body iframe{min-height:480px}}
+
+/* ---------- Convênios ---------- */
+.conv-feature{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:0;background:#fff;border:1px solid #dce8ed;border-radius:16px;overflow:hidden;margin-bottom:22px;box-shadow:0 10px 30px #0a34441a}
+.conv-photo{width:100%;height:100%;min-height:320px;object-fit:cover;display:block;background:#e9f1f5}
+.conv-body{padding:32px 34px}
+.conv-body h2{margin:6px 0 12px}
+.conv-note{background:#fff7e0;border-left:4px solid #e0a800;color:#6b4e00;padding:10px 14px;border-radius:6px;font-size:14px}
+.conv-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.conv-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.conv-grid .card h3{margin-top:0}
+.conv-table{border:1px solid #dce8ed;border-radius:10px;overflow:hidden;margin:10px 0}
+.conv-table [role=row]{display:flex;justify-content:space-between;gap:12px;padding:12px 14px;border-top:1px solid #eef3f5}
+.conv-table [role=row]:first-child{background:#eaf6fa;border-top:0;font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.6px;color:#10364c}
+.conv-table b{color:#0788b5;white-space:nowrap}
+.conv-list{margin:8px 0 0;padding-left:1.2em;color:#37505e;line-height:1.6}
+.conv-list li{margin-bottom:6px}
+.conv-alert{border-color:#f1d27a;background:#fffbee}
+.conv-alert a:not(.btn){color:#0788b5;text-decoration:underline}
+@media(max-width:900px){.conv-feature{grid-template-columns:1fr}.conv-photo{min-height:0;height:auto;aspect-ratio:16/10}.conv-body{padding:22px 20px}.conv-grid{grid-template-columns:1fr}}
+@media(max-width:700px){.conv-actions .btn{width:100%}}
