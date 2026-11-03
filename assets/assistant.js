@@ -33,7 +33,8 @@
   const panel=root.querySelector(".sind-chat-panel"),launch=root.querySelector(".sind-chat-launch"),messages=root.querySelector(".sind-chat-messages"),form=root.querySelector(".sind-chat-form"),input=form.querySelector("input");
   const scroll=()=>messages.scrollTo({top:messages.scrollHeight,behavior:"smooth"});
   launch.addEventListener("click",()=>{panel.hidden=false;launch.hidden=true;input.focus();});
-  root.querySelector(".sind-chat-close").addEventListener("click",()=>{panel.hidden=true;launch.hidden=false;});\n  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!panel.hidden){panel.hidden=true;launch.hidden=false;}});
+  root.querySelector(".sind-chat-close").addEventListener("click",()=>{panel.hidden=true;launch.hidden=false;}); 
+  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!panel.hidden){panel.hidden=true;launch.hidden=false;}});
   const bubble=(txt,who="bot")=>{const e=document.createElement("div");e.className="sind-msg "+who;e.textContent=txt;messages.appendChild(e);scroll();return e;};
   const load=async()=>{
     if(docs)return docs;if(loading)return loading;
