@@ -148,10 +148,11 @@
  const box=f.querySelector(".wrap,.container")||f;
  const p=document.createElement("p");p.className="foot-hours";
  p.innerHTML="<strong>Horário de funcionamento:</strong> segunda a quinta, das 8h às 12h e das 13h às 17h · sexta, das 8h às 12h";
- box.append(p);
+ const cr=box.querySelector(".credit"),put=n=>cr?cr.before(n):box.append(n);
+ put(p);
  const soc=document.createElement("p");soc.className="foot-social";
  soc.innerHTML='<strong>Siga o SINDISINDI/RS:</strong> <a href="https://www.facebook.com/sindisindirs.sindicato" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.instagram.com/sindisindi_rs/" target="_blank" rel="noopener">Instagram</a> · <a href="privacidade.html">Privacidade</a>';
- box.append(soc);
+ put(soc);
 })();
 
 // Compartilhar, tempo de leitura, formulário de contato e voltar ao topo

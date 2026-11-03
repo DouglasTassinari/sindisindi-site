@@ -67,8 +67,15 @@ html body header nav a.nav-cta:after,html body .main-nav a.nav-cta:after{display
 .steps p{margin:0;color:#4a6676}
 
 /* ---------- Rodapé: crédito ---------- */
-.credit{margin-top:18px;padding-top:14px;border-top:1px solid #ffffff22;font-size:13px;color:#9db6c2}
-.credit strong{color:#fff}
+.credit{margin-top:22px;padding-top:16px;border-top:1px solid #ffffff22;display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;font-size:13px;color:#9db6c2}
+.credit-proto{text-transform:uppercase;letter-spacing:.8px;font-size:11px;font-weight:700;border:1px solid #ffffff40;border-radius:20px;padding:4px 10px}
+.credit-by{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tz{display:inline-flex;align-items:center;gap:6px;color:#fff}
+.tz-mark{width:22px;height:22px;display:block}
+.tz b{font:700 14px Poppins,Montserrat,Arial,sans-serif;letter-spacing:2.2px}
+.credit-tag{margin-left:auto;font-size:12px;letter-spacing:.6px;text-transform:uppercase}
+.credit-tag em{font-style:normal;color:#4CAF50;font-weight:700}
+@media(max-width:700px){.credit-tag{margin-left:0;width:100%}}
 
 /* ---------- Tablet e celular ---------- */
 @media(max-width:1000px){
