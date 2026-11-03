@@ -14,6 +14,8 @@ O que faz (idempotente, pode rodar quantas vezes quiser):
 Para trocar de domínio: edite SITE_URL abaixo (ou exporte a variável SITE_URL) e rode o build.
 """
 import hashlib
+import html
+import json
 import os
 import re
 import subprocess
@@ -69,6 +71,37 @@ def lastmod(page):
         return None
 
 
+MESES = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho",
+         "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
+
+
+def render_acordos(s):
+    """Gera os cards da biblioteca a partir de data/acordos.json."""
+    f = ROOT / "data/acordos.json"
+    if not f.exists() or "<!-- @acordos -->" not in s:
+        return s
+    docs = json.loads(f.read_text(encoding="utf-8"))
+    docs.sort(key=lambda d: (MESES.index(d["mes"]), d["nome"].lower()))
+    usados = [m for m in MESES if any(d["mes"] == m for d in docs)]
+    chips = "".join(f'<button type="button" class="chip" data-m="{m}">{m}</button>' for m in usados)
+    cards = []
+    for d in docs:
+        mb = d["kb"] / 1024
+        tam = f"{mb:.1f} MB".replace(".", ",") if mb >= 1 else f'{d["kb"]} KB'
+        nome = html.escape(d["nome"])
+        cards.append(
+            f'<article class="card ac-card" data-m="{d["mes"]}" data-n="{nome} {d["mes"]}">'
+            f'<div class="tag">Data-base · {d["mes"]}</div><h3>{nome}</h3>'
+            f'<p>PDF · {tam}</p>'
+            f'<a class="btn" href="{d["arquivo"]}" target="_blank" rel="noopener">Abrir PDF</a> '
+            f'<a class="btn light" href="{d["arquivo"]}" download>Baixar</a></article>')
+    s = re.sub(r"(<!-- @acordos -->).*?(<!-- @end acordos -->)",
+               lambda m: m.group(1) + chr(10) + chr(10).join(cards) + chr(10) + m.group(2), s, flags=re.S)
+    s = re.sub(r"(<!-- @acordos-chips -->).*?(<!-- @end acordos-chips -->)",
+               lambda m: m.group(1) + chips + m.group(2), s, flags=re.S)
+    return s
+
+
 def main():
     pages = sorted(p for p in ROOT.glob("*.html"))
     header = read(ROOT / "partials/header.html").strip()
@@ -100,6 +133,8 @@ def main():
         if p.name not in PRIVATE and "<header" in s:
             s = NOSCRIPT_RE.sub("", s)
             s = re.sub(r"(</header>)", lambda m: m.group(1) + NOSCRIPT, s, count=1)
+        if p.name == "acordos.html":
+            s = render_acordos(s)
         write(p, s)
 
     # sitemap + robots
