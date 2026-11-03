@@ -119,3 +119,22 @@ html.hc .gov-hours{background:#000!important}
 .map-box iframe{width:100%;height:100%;border:0;display:block}
 .foot-social{margin-top:6px;font-size:14px}.foot-social a{text-decoration:underline}
 @media(prefers-reduced-motion:reduce){.faq-a{animation:none}.faq-item summary:after{transition:none}}
+
+/* Compartilhar, leitura, formulário, privacidade, voltar ao topo */
+.read-time{margin:6px 0 14px;font-size:14px;color:#4d6773}
+.share{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:22px 0;padding:14px 16px;background:#f3f7f9;border-radius:12px}
+.share>span{font-weight:700;color:#123d52;font-size:14px}
+.share-btn{font:700 14px Arial,sans-serif;background:#fff;color:#123d52;border:1px solid #9bb5c1;border-radius:30px;padding:8px 16px;cursor:pointer;text-decoration:none;transition:background .2s,border-color .2s}
+.share-btn:hover{background:#eaf4f8;border-color:#0789b7}
+.cform{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+.cform label{display:grid;gap:6px;font-weight:700;font-size:14px;color:#123d52}.cform .full{grid-column:1/-1}
+.cform input,.cform select,.cform textarea{font:16px Arial,sans-serif;padding:12px 14px;border:1px solid #9bb5c1;border-radius:10px;width:100%;background:#fff;color:#123d52}
+.cform .btn,.cform-err,.cform-note{grid-column:1/-1}.cform .btn{justify-self:start;cursor:pointer;border:0}
+.cform-err{margin:0;color:#b3261e;font-weight:700}.cform-note{margin:0;font-size:13px;color:#4d6773}
+@media(max-width:700px){.cform{grid-template-columns:1fr}}
+.legal h2{margin:26px 0 6px;font-size:22px;color:#123d52}.legal p{margin:0;line-height:1.7;color:#3f5966}
+.to-top{position:fixed;left:18px;bottom:18px;width:46px;height:46px;border-radius:50%;border:0;background:#123d52;color:#fff;font-size:22px;cursor:pointer;box-shadow:0 8px 22px #123d5240;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .3s ease,transform .3s ease,background .2s;z-index:80}
+.to-top.on{opacity:1;transform:none;pointer-events:auto}.to-top:hover{background:#0789b7}
+#sindi-toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,16px);background:#123d52;color:#fff;padding:10px 20px;border-radius:30px;opacity:0;pointer-events:none;transition:.3s;z-index:90;font:600 14px Arial,sans-serif}
+#sindi-toast.on{opacity:1;transform:translate(-50%,0)}
+@media(prefers-reduced-motion:reduce){.to-top,#sindi-toast{transition:none}}

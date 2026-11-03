@@ -1,6 +1,6 @@
 (() => {
  const pages=[
-  ["Início","index.html"],["O sindicato","sindicato.html"],["Notícias","noticias.html"],["Direitos do trabalhador","direitos.html"],["Acordos coletivos","acordos.html"],["Convênios","convenios.html"],["Publicações","publicacoes.html"],["Contato","contato.html"],["História do sindicato","sindisindi-37-anos.html"],["Saúde no trabalho e acordos","e-sindicatario-saude-acordos.html"],["Inglês no trabalho","ingles-no-trabalho.html"],["Questionário de saúde","questionario-saude.html"],["Ponto facultativo","ponto-facultativo-copa.html"],["Convenções da OIT","oit-igualdade-violencia.html"],["ACT CPERS","act-cpers.html"],["ACT CUT-RS","act-cut-rs.html"],["Acordo SENGE-RS","acordo-senge-rs.html"],["Homologações","homologacoes.html"],["Dúvidas frequentes","faq.html"]
+  ["Início","index.html"],["O sindicato","sindicato.html"],["Notícias","noticias.html"],["Direitos do trabalhador","direitos.html"],["Acordos coletivos","acordos.html"],["Convênios","convenios.html"],["Publicações","publicacoes.html"],["Contato","contato.html"],["História do sindicato","sindisindi-37-anos.html"],["Saúde no trabalho e acordos","e-sindicatario-saude-acordos.html"],["Inglês no trabalho","ingles-no-trabalho.html"],["Questionário de saúde","questionario-saude.html"],["Ponto facultativo","ponto-facultativo-copa.html"],["Convenções da OIT","oit-igualdade-violencia.html"],["ACT CPERS","act-cpers.html"],["ACT CUT-RS","act-cut-rs.html"],["Acordo SENGE-RS","acordo-senge-rs.html"],["Homologações","homologacoes.html"],["Dúvidas frequentes","faq.html"],["Aviso de privacidade","privacidade.html"]
  ];
  const header=document.querySelector("header");
  if(!header||document.getElementById("site-search-form"))return;
@@ -145,6 +145,53 @@
  p.innerHTML="<strong>Horário de funcionamento:</strong> segunda a quinta, das 8h às 12h e das 13h às 17h · sexta, das 8h às 12h";
  box.append(p);
  const soc=document.createElement("p");soc.className="foot-social";
- soc.innerHTML='<strong>Siga o SINDISINDI/RS:</strong> <a href="https://www.facebook.com/sindisindirs.sindicato" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.instagram.com/sindisindi_rs/" target="_blank" rel="noopener">Instagram</a>';
+ soc.innerHTML='<strong>Siga o SINDISINDI/RS:</strong> <a href="https://www.facebook.com/sindisindirs.sindicato" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.instagram.com/sindisindi_rs/" target="_blank" rel="noopener">Instagram</a> · <a href="privacidade.html">Privacidade</a>';
  box.append(soc);
+})();
+
+// Compartilhar, tempo de leitura, formulário de contato e voltar ao topo
+(() => {
+ const toast=(t)=>{let n=document.getElementById("sindi-toast");if(!n){n=document.createElement("div");n.id="sindi-toast";n.setAttribute("role","status");document.body.append(n);}n.textContent=t;n.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>n.classList.remove("on"),2400);};
+
+ // Notícias: tempo de leitura e compartilhar
+ const art=document.querySelector('main .wrap[style*="max-width"] .tag')&&document.querySelector('main .wrap[style*="max-width:820px"],main .wrap[style*="max-width: 820px"]');
+ if(art&&!art.querySelector(".share")){
+  const words=(art.textContent||"").replace(/\s+/g," ").trim().split(" ").filter(Boolean).length;
+  const min=Math.max(1,Math.ceil(words/200));
+  const tag=art.querySelector(".tag");
+  const meta=document.createElement("p");meta.className="read-time";meta.textContent="Leitura: "+min+(min===1?" minuto":" minutos");
+  tag.after(meta);
+  const url=location.href.split("#")[0],title=document.title.replace(/\s*\|.*$/,"");
+  const box=document.createElement("div");box.className="share";
+  box.innerHTML='<span>Compartilhar:</span>';
+  const mk=(label,href)=>{const a=document.createElement("a");a.className="share-btn";a.textContent=label;a.href=href;a.target="_blank";a.rel="noopener";return a;};
+  const wa=mk("WhatsApp","https://wa.me/?text="+encodeURIComponent(title+" "+url));
+  const em=mk("E-mail","mailto:?subject="+encodeURIComponent(title)+"&body="+encodeURIComponent(title+"\n"+url));em.removeAttribute("target");
+  const cp=document.createElement("button");cp.type="button";cp.className="share-btn";cp.textContent="Copiar link";
+  cp.addEventListener("click",async()=>{try{await navigator.clipboard.writeText(url);}catch{const t=document.createElement("textarea");t.value=url;document.body.append(t);t.select();try{document.execCommand("copy");}catch{}t.remove();}toast("Link copiado.");});
+  box.append(wa,em,cp);
+  const back=[...art.querySelectorAll("a.btn")].find(a=>/Voltar/.test(a.textContent));
+  (back||art.lastElementChild).before(box);
+ }
+
+ // Formulário de contato via WhatsApp
+ const form=document.getElementById("contact-form");
+ if(form){
+  form.addEventListener("submit",e=>{
+   e.preventDefault();
+   const nome=form.nome.value.trim(),msg=form.mensagem.value.trim(),err=form.querySelector(".cform-err");
+   if(!nome||!msg){err.hidden=false;(nome?form.mensagem:form.nome).focus();return;}
+   err.hidden=true;
+   const text="Olá, sou "+nome+".\nAssunto: "+form.assunto.value+"\n\n"+msg;
+   window.open("https://wa.me/5551998843247?text="+encodeURIComponent(text),"_blank","noopener");
+  });
+ }
+
+ // Voltar ao topo
+ const up=document.createElement("button");up.type="button";up.className="to-top";up.setAttribute("aria-label","Voltar ao topo");up.innerHTML="↑";
+ document.body.append(up);
+ const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+ up.addEventListener("click",()=>window.scrollTo({top:0,behavior:reduce?"auto":"smooth"}));
+ let tick=false;
+ addEventListener("scroll",()=>{if(tick)return;tick=true;requestAnimationFrame(()=>{up.classList.toggle("on",scrollY>600);tick=false;});},{passive:true});
 })();
