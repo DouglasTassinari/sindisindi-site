@@ -26,3 +26,17 @@
   .sind-chat-backdrop{z-index:9997}
   .sind-chat-panel{z-index:9999!important}
 }
+/* Mobile: floating actions compactas, sem cobrir conteúdo */
+@media(max-width:600px){
+  .sind-wa-float,.sind-chat-launch{
+    width:48px!important;height:48px!important;min-width:48px!important;
+    padding:0!important;border-radius:50%!important;justify-content:center!important;
+    right:14px!important;box-sizing:border-box!important;gap:0!important;
+    box-shadow:0 5px 18px #082f4050!important;
+  }
+  .sind-wa-float{bottom:14px!important;background:#16834b!important}
+  .sind-chat-launch{bottom:72px!important;background:#087fa9!important}
+  .sind-wa-float>span:not(.sind-wa-icon),.sind-chat-launch>span:not(.sind-chat-launch-icon){display:none!important}
+  .sind-wa-icon,.sind-chat-launch-icon{font-size:19px!important;border:0!important;width:auto!important;height:auto!important}
+  body{padding-bottom:10px}
+}
