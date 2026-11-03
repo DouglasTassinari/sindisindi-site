@@ -34,3 +34,20 @@
 @media(max-width:850px){.hero{padding-bottom:230px!important}.hero-floats{left:0;right:auto;bottom:-245px;width:100%;height:220px}.float-one{left:0;right:auto;top:0}.float-two{right:0;top:76px}.float-three{left:13%;right:auto;top:150px}.film-layout{grid-template-columns:1fr;gap:28px}.film-poster{min-height:330px}}
 @media(max-width:560px){.hero{padding-bottom:240px!important}.hero-floats{bottom:-255px;height:230px}.float-card{min-width:0;padding:11px 13px;gap:9px}.float-card strong{font-size:12px}.float-card small{font-size:9px}.float-icon{flex-basis:32px;height:32px;font-size:16px}.float-one{left:0;top:0}.float-two{right:0;top:78px}.float-three{left:9%;top:156px}.film-poster{min-height:280px;border-radius:18px}.film-caption{left:20px;bottom:28px}.film-caption strong{font-size:25px}.film-note{font-size:8px;right:10px;top:10px}.film-play{width:60px;height:60px}}
 @media(prefers-reduced-motion:reduce){.float-card,.ribbon-track{animation:none!important}}
+
+/* Correção de composição mobile: sem sobreposição de cards */
+@media(max-width:850px){
+  .hero{padding-bottom:64px!important;min-height:0!important}
+  .hero-floats{display:none!important}
+  .moving-ribbon{position:relative!important;z-index:1!important;clear:both!important;margin-top:0!important}
+}
+@media(max-width:600px){
+  .hero{padding-top:54px!important;padding-bottom:58px!important}
+  .hero .btn{width:100%!important;max-width:100%!important;margin:7px 0!important;box-sizing:border-box!important}
+  .hero h1{font-size:clamp(36px,9vw,48px)!important;line-height:1.04!important;letter-spacing:-1.6px!important}
+  .hero p{font-size:16px!important;line-height:1.55!important}
+  .moving-ribbon{padding:12px 0!important}
+  .ribbon-track{font-size:10px!important;gap:20px!important;letter-spacing:1.7px!important}
+  .sind-wa-float{right:12px!important;bottom:12px!important;padding:10px 13px!important;font-size:11px!important;box-shadow:0 5px 18px #092b1b45!important}
+  .sind-chat-launch{right:12px!important;bottom:62px!important;padding:10px 13px!important;font-size:11px!important;box-shadow:0 5px 18px #12384b45!important}
+}
