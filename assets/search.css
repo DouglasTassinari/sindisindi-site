@@ -82,3 +82,12 @@ html.hc img{filter:grayscale(1) contrast(1.2)}
 .offer-item:hover{transform:translateY(-3px);box-shadow:0 12px 28px #123d5220}
 .offer-item b{display:block;color:#123d52;font-size:17px;margin-bottom:6px}.offer-item p{margin:0;font-size:15px;line-height:1.5;color:#3f5966}
 .quick-grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr))!important}
+
+/* Informações institucionais */
+.k-inst{font-size:12px;letter-spacing:2.5px;font-weight:700;color:#0789b7;text-transform:uppercase;margin:0 0 6px}
+.inst-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr));gap:14px;margin:18px 0 8px}
+.person{background:#fff;border:1px solid #d9e5ea;border-left:4px solid #0789b7;border-radius:10px;padding:14px 16px}
+.person span{display:block;font-size:12.5px;color:#4d6773;line-height:1.35;margin-bottom:3px}
+.person b{display:block;color:#123d52;font-size:16px;line-height:1.35}
+.inst-h{margin:30px 0 4px;color:#123d52;font-size:20px}
+.inst-memo{margin-top:26px;padding:14px 18px;background:#f3f7f9;border-radius:10px;color:#3f5966}
