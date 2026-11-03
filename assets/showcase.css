@@ -1,0 +1,36 @@
+/* Elementos de destaque da página inicial */
+.hero{padding-bottom:150px!important}
+.hero .wrap{position:relative!important}
+.hero-floats{position:absolute;right:0;bottom:-195px;width:480px;height:260px;pointer-events:none;z-index:5}
+.float-card{position:absolute;display:flex;align-items:center;gap:13px;min-width:235px;padding:15px 19px;border:1px solid #ffffff8c;border-radius:17px;background:rgba(255,255,255,.94);color:#103b51;box-shadow:0 18px 48px #002d4140;backdrop-filter:blur(18px);pointer-events:auto;transition:transform .3s,box-shadow .3s}
+.float-card:hover{transform:translateY(-7px) rotate(0)!important;box-shadow:0 25px 55px #002d4155}
+.float-card strong,.float-card small{display:block}
+.float-card strong{font:800 14px Manrope,Arial,sans-serif}
+.float-card small{margin-top:3px;color:#66808d;font-size:11px}
+.float-icon{display:grid;place-items:center;flex:0 0 39px;height:39px;border-radius:12px;background:linear-gradient(140deg,#078fba,#075576);color:#fff;font-size:20px}
+.float-one{right:170px;top:2px;transform:rotate(-5deg);animation:floatBob 6s ease-in-out infinite}
+.float-two{right:0;top:92px;transform:rotate(4deg);animation:floatBob 7s ease-in-out -1s infinite}
+.float-three{right:145px;top:174px;transform:rotate(-2deg);animation:floatBob 6.5s ease-in-out -2s infinite}
+.moving-ribbon{overflow:hidden;background:#062f45;color:#e9faff;border-top:1px solid #ffffff1c;border-bottom:1px solid #ffffff1c;transform:translateY(-1px);padding:17px 0}
+.ribbon-track{display:flex;align-items:center;gap:30px;width:max-content;white-space:nowrap;animation:ribbonMove 32s linear infinite;font:800 12px Manrope,Arial,sans-serif;letter-spacing:2.5px}
+.ribbon-track i{font-style:normal;color:#48c4df;font-size:17px}
+.moving-ribbon:hover .ribbon-track{animation-play-state:paused}
+.film-section{overflow:hidden;background:linear-gradient(130deg,#f0f8fb,#fff 52%,#e9f5f9)}
+.film-layout{display:grid;grid-template-columns:.8fr 1.2fr;align-items:center;gap:clamp(35px,6vw,90px)}
+.film-copy h2{font:800 clamp(32px,4vw,49px)/1.08 Manrope,Arial,sans-serif;color:#092f45;letter-spacing:-1.8px;margin:15px 0}
+.film-copy p{color:#587381;max-width:450px;margin-bottom:25px}
+.film-poster{position:relative;min-height:360px;overflow:hidden;border-radius:24px;background:#0a3b52;box-shadow:0 30px 75px #082e4430;isolation:isolate}
+.film-poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+.film-poster:hover img{transform:scale(1.06)}
+.film-shade{position:absolute;inset:0;background:linear-gradient(90deg,#062b40dd,#062b4055 65%,#062b4022),linear-gradient(0deg,#062b40bb,transparent 65%)}
+.film-play{position:absolute;left:50%;top:43%;transform:translate(-50%,-50%);display:grid;place-items:center;width:76px;height:76px;border:1px solid #ffffffa8;border-radius:50%;background:#ffffff2a;color:white;font-size:24px;padding-left:4px;box-shadow:0 0 0 13px #ffffff16,0 12px 35px #001c2b55;backdrop-filter:blur(10px)}
+.film-caption{position:absolute;left:32px;bottom:44px;color:white;display:flex;flex-direction:column;gap:5px}
+.film-caption span{font-size:10px;letter-spacing:2px;font-weight:800;color:#9de9fa}
+.film-caption strong{font:800 30px Manrope,Arial,sans-serif;letter-spacing:-1px}
+.film-caption small{font-size:13px;color:#e4f5f9}
+.film-note{position:absolute;right:18px;top:18px;padding:8px 12px;border:1px solid #ffffff50;border-radius:30px;background:#062b4066;color:#fff;font-size:10px;backdrop-filter:blur(8px)}
+@keyframes floatBob{0%,100%{translate:0 0}50%{translate:0 -11px}}
+@keyframes ribbonMove{to{transform:translateX(-50%)}}
+@media(max-width:850px){.hero{padding-bottom:230px!important}.hero-floats{left:0;right:auto;bottom:-245px;width:100%;height:220px}.float-one{left:0;right:auto;top:0}.float-two{right:0;top:76px}.float-three{left:13%;right:auto;top:150px}.film-layout{grid-template-columns:1fr;gap:28px}.film-poster{min-height:330px}}
+@media(max-width:560px){.hero{padding-bottom:240px!important}.hero-floats{bottom:-255px;height:230px}.float-card{min-width:0;padding:11px 13px;gap:9px}.float-card strong{font-size:12px}.float-card small{font-size:9px}.float-icon{flex-basis:32px;height:32px;font-size:16px}.float-one{left:0;top:0}.float-two{right:0;top:78px}.float-three{left:9%;top:156px}.film-poster{min-height:280px;border-radius:18px}.film-caption{left:20px;bottom:28px}.film-caption strong{font-size:25px}.film-note{font-size:8px;right:10px;top:10px}.film-play{width:60px;height:60px}}
+@media(prefers-reduced-motion:reduce){.float-card,.ribbon-track{animation:none!important}}
