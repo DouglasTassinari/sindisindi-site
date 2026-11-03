@@ -20,7 +20,7 @@
     <a class="sind-wa-float" href="${WA}" target="_blank" rel="noopener"><span class="sind-wa-icon">◉</span><span>Fale com o sindicato</span></a>
     <button class="sind-chat-launch" type="button"><span class="sind-chat-launch-icon">?</span><span>Precisa de ajuda?</span></button>
     <section class="sind-chat-panel" aria-label="Assistente SINDISINDI/RS" hidden>
-      <div class="sind-chat-head"><div class="sind-chat-brand"><span class="sind-chat-avatar">S</span><div><strong>Atendimento SINDISINDI/RS</strong><small><i></i> Assistente de informações do site</small></div></div><button class="sind-chat-close" aria-label="Fechar atendimento">×</button></div>
+      <div class="sind-chat-head"><div class="sind-chat-brand"><span class="sind-chat-avatar">S</span><div><strong>Atendimento SINDISINDI/RS</strong><small><i></i> Assistente de informações do site</small></div></div><button class="sind-chat-close" type="button" aria-label="Fechar chat" title="Fechar chat"><span aria-hidden="true">×</span></button></div>
       <div class="sind-chat-messages" aria-live="polite">
         <div class="sind-chat-date">COMO PODEMOS AJUDAR?</div>
         <div class="sind-msg bot">Olá! Sou o assistente virtual do SINDISINDI/RS. Posso pesquisar informações nas páginas do site e indicar onde encontrar o que você precisa.</div>
@@ -33,7 +33,7 @@
   const panel=root.querySelector(".sind-chat-panel"),launch=root.querySelector(".sind-chat-launch"),messages=root.querySelector(".sind-chat-messages"),form=root.querySelector(".sind-chat-form"),input=form.querySelector("input");
   const scroll=()=>messages.scrollTo({top:messages.scrollHeight,behavior:"smooth"});
   launch.addEventListener("click",()=>{panel.hidden=false;launch.hidden=true;input.focus();});
-  root.querySelector(".sind-chat-close").addEventListener("click",()=>{panel.hidden=true;launch.hidden=false;});
+  root.querySelector(".sind-chat-close").addEventListener("click",()=>{panel.hidden=true;launch.hidden=false;});\n  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!panel.hidden){panel.hidden=true;launch.hidden=false;}});
   const bubble=(txt,who="bot")=>{const e=document.createElement("div");e.className="sind-msg "+who;e.textContent=txt;messages.appendChild(e);scroll();return e;};
   const load=async()=>{
     if(docs)return docs;if(loading)return loading;
