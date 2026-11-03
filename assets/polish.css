@@ -138,3 +138,34 @@ html body header:not(.site-header) .menu-toggle{display:none}
 .site-header .menu-toggle{border-radius:10px;border:1px solid #cfe0e7;justify-content:center;padding:0 13px}
 
 .ac-lbl{align-self:center;font:800 11px Arial,sans-serif;letter-spacing:1px;text-transform:uppercase;color:#4a6676;min-width:36px}
+
+/* ---------- Notícias ---------- */
+.news-list{grid-template-columns:repeat(3,minmax(0,1fr))}
+.news-item{display:flex;flex-direction:column}
+.news-item h3{margin:6px 0 8px;font-size:19px}
+.news-item h3 a:hover{color:#0788b5}
+.news-item p{flex:1}
+.news-cover{display:block;margin:-4px -4px 14px;border-radius:10px;overflow:hidden;background:#e9f1f5}
+.news-cover img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
+.news-item .btn{align-self:flex-start;margin-top:8px}
+html body .article-hero{min-height:0!important;padding:56px 0 44px!important}
+.article-hero h1{max-width:900px;font-size:clamp(28px,4vw,44px)!important}
+.article-meta{color:#4a6676;font-size:14px;margin:4px 0 18px}
+.article-cover{margin:0 0 22px}
+.article-cover img,.article-body img{max-width:100%;height:auto;border-radius:10px;display:block}
+.article-body{font-size:18px;line-height:1.75;color:#1d3542}
+.article-body p{margin:0 0 1.1em}
+.article-body figure{margin:1.4em 0}
+.article-body h2,.article-body h3,.article-body h4{color:#10364c;margin:1.6em 0 .6em;line-height:1.3}
+.article-body ul,.article-body ol{margin:0 0 1.2em;padding-left:1.3em}
+.article-body a{color:#0788b5;text-decoration:underline}
+.article-body iframe{width:100%;border:1px solid #dce8ed;border-radius:10px;min-height:520px;background:#fff}
+.article-more{margin:34px 0 26px;padding-top:22px;border-top:1px solid #dce8ed}
+.article-more h2{font-size:20px;margin:0 0 10px}
+.article-more ul{list-style:none;margin:0;padding:0}
+.article-more li{border-bottom:1px solid #eef3f5}
+.article-more a{display:block;padding:12px 0;color:#10364c;font-weight:700}
+.article-more a:hover{color:#0788b5}
+.article-more span{display:block;font-weight:400;font-size:13px;color:#647987}
+@media(max-width:1000px){.news-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.news-list{grid-template-columns:1fr}.article-body{font-size:17px}.article-body iframe{min-height:480px}}

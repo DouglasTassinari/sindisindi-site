@@ -22,6 +22,9 @@ import subprocess
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import news  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 SITE_URL = os.environ.get("SITE_URL", "https://douglastassinari.github.io/sindisindi-site").rstrip("/")
 OLD_URLS = ["https://douglastassinari.github.io/sindisindi-site"]
@@ -107,6 +110,8 @@ def render_acordos(s):
 
 
 def main():
+    docs = news.render_all(ROOT, SITE_URL)
+    artigos = {d["arquivo"] for d in docs}
     pages = sorted(p for p in ROOT.glob("*.html"))
     header = read(ROOT / "partials/header.html").strip()
     footer = read(ROOT / "partials/footer.html").strip()
@@ -157,7 +162,7 @@ def main():
     # mapa do site (fallback de navegação sem JavaScript)
     items = []
     for p in public:
-        if p.name in ("index.html", "mapa-do-site.html"):
+        if p.name in ("index.html", "mapa-do-site.html") or p.name in artigos:
             continue
         items.append(f'<li><a href="{p.name}">{title_of(read(p)) or p.name}</a></li>')
     items.insert(0, '<li><a href="index.html">Início</a></li>')
