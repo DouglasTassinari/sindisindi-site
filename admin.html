@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Modo administrativo | SINDISINDI/RS</title>
+<style>
+:root{--blue:#0789b7;--navy:#123d52;--line:#d9e5ea;--muted:#647d89}
+*{box-sizing:border-box}body{margin:0;font:16px/1.5 Arial,sans-serif;background:#f3f7f9;color:#25495a}
+header{background:var(--navy);color:#fff;padding:14px clamp(16px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+header strong{font-size:18px}header a{color:#bfe9f5;text-decoration:none;font-size:14px}
+main{width:min(1100px,calc(100% - 32px));margin:24px auto 60px}
+.notice{background:#fff7e0;border:1px solid #f0d58a;border-radius:10px;padding:12px 16px;font-size:14px;margin-bottom:18px}
+.bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-bottom:14px}
+.bar h1{margin:0;font-size:24px;color:var(--navy)}#count{color:var(--muted);font-size:14px}
+button,.btn{font:700 14px Arial;border:1px solid var(--line);background:#fff;color:var(--navy);padding:8px 14px;border-radius:8px;cursor:pointer;text-decoration:none;transition:background .2s,transform .15s}
+button:hover{background:#eaf4f8}button.primary{background:var(--blue);border-color:var(--blue);color:#fff}button.primary:hover{background:var(--navy)}button.danger{color:#b3261e}
+ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.post{display:grid;grid-template-columns:120px 1fr auto;gap:14px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;cursor:grab;transition:box-shadow .2s,opacity .2s}
+.post:hover{box-shadow:0 8px 22px #123d5214}.post.drag{opacity:.4}.post.draft{opacity:.65;border-style:dashed}
+.thumb{width:120px;height:68px;border-radius:8px;background:#e4edf1;overflow:hidden}.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.body strong{display:block;color:var(--navy)}.body span{font-size:13px;color:var(--muted)}
+.acts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+#editor{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .4s cubic-bezier(.2,.8,.2,1),opacity .3s;margin-top:0}
+#editor.open{grid-template-rows:1fr;opacity:1;margin:0 0 18px}
+#editor>form{overflow:hidden;min-height:0}
+.panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;display:grid;gap:12px}
+.panel h2{margin:0;font-size:18px;color:var(--navy)}label{display:grid;gap:4px;font-size:13px;font-weight:700;color:var(--navy)}
+input[type=text],input[type=url],textarea{font:15px Arial;padding:10px 12px;border:1px solid #9bb5c1;border-radius:8px;width:100%}
+input:focus,textarea:focus{outline:3px solid #0789b733;border-color:var(--blue)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.chk{display:flex;align-items:center;gap:8px}
+#msg{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:var(--navy);color:#fff;padding:10px 18px;border-radius:30px;opacity:0;pointer-events:none;transition:.3s}#msg.on{opacity:1;transform:translate(-50%,0)}
+@media(max-width:700px){.post{grid-template-columns:90px 1fr}.thumb{width:90px}.acts{grid-column:1/-1;justify-content:flex-start}.row{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header><strong>SINDISINDI/RS · Modo administrativo</strong><a href="noticias.html">Ver página de Notícias →</a></header>
+<main>
+ <p class="notice"><strong>Protótipo:</strong> as alterações ficam salvas neste navegador, para demonstrar o fluxo de organização das publicações. Na versão de produção, o painel passa a gravar no site com login e senha.</p>
+ <div class="bar"><div><h1>Publicações</h1><span id="count"></span></div>
+  <div><button id="export" type="button">Exportar</button> <button id="reset" type="button">Restaurar originais</button> <button id="new" type="button" class="primary">+ Nova publicação</button></div></div>
+ <div id="editor"><form id="post-form"><div class="panel">
+  <h2 id="form-title">Nova publicação</h2>
+  <label>Título<input type="text" name="title" required maxlength="160"></label>
+  <div class="row"><label>Categoria<input type="text" name="tag" maxlength="40" placeholder="Ex.: Direitos"></label>
+  <label>Link da página<input type="text" name="url" placeholder="ex.: direitos.html ou https://…"></label></div>
+  <label>Resumo<textarea name="summary" rows="3" maxlength="300"></textarea></label>
+  <div class="row"><label>Imagem (endereço)<input type="text" name="img" placeholder="assets/img/…"></label>
+  <label>ou enviar imagem (até 1,5 MB)<input type="file" name="file" accept="image/*"></label></div>
+  <label class="chk"><input type="checkbox" name="published" checked> Publicar no site</label>
+  <div><button type="submit" class="primary">Salvar</button> <button type="button" id="cancel">Cancelar</button></div>
+ </div></form></div>
+ <p style="font-size:13px;color:var(--muted)">Arraste os cartões ou use ↑ ↓ para reordenar. "Ocultar" mantém a publicação como rascunho.</p>
+ <ul id="post-list"></ul>
+</main>
+<div id="msg" role="status" aria-live="polite"></div>
+<script src="assets/admin.js?v=1"></script>
+</body>
+</html>
