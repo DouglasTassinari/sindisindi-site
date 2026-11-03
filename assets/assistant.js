@@ -17,6 +17,7 @@
   let docs=null, loading=null;
   const root=document.createElement("div");root.id="sind-assistant";
   root.innerHTML=`
+    <div class="sind-chat-backdrop" hidden></div>
     <a class="sind-wa-float" href="${WA}" target="_blank" rel="noopener"><span class="sind-wa-icon">◉</span><span>Fale com o sindicato</span></a>
     <button class="sind-chat-launch" type="button"><span class="sind-chat-launch-icon">?</span><span>Precisa de ajuda?</span></button>
     <section class="sind-chat-panel" aria-label="Assistente SINDISINDI/RS" hidden>
@@ -30,11 +31,15 @@
       <div class="sind-chat-foot">As respostas são localizadas no conteúdo publicado no site. Para atendimento pessoal, use o botão WhatsApp.</div>
     </section>`;
   document.body.appendChild(root);
-  const panel=root.querySelector(".sind-chat-panel"),launch=root.querySelector(".sind-chat-launch"),messages=root.querySelector(".sind-chat-messages"),form=root.querySelector(".sind-chat-form"),input=form.querySelector("input");
+  const panel=root.querySelector(".sind-chat-panel"),backdrop=root.querySelector(".sind-chat-backdrop"),launch=root.querySelector(".sind-chat-launch"),messages=root.querySelector(".sind-chat-messages"),form=root.querySelector(".sind-chat-form"),input=form.querySelector("input");
   const scroll=()=>messages.scrollTo({top:messages.scrollHeight,behavior:"smooth"});
-  launch.addEventListener("click",()=>{panel.hidden=false;launch.hidden=true;input.focus();});
-  root.querySelector(".sind-chat-close").addEventListener("click",()=>{panel.hidden=true;launch.hidden=false;}); 
-  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!panel.hidden){panel.hidden=true;launch.hidden=false;}});
+  const closeChat=()=>{panel.hidden=true;backdrop.hidden=true;launch.hidden=false;document.documentElement.style.removeProperty("--sind-vv-height");document.documentElement.style.removeProperty("--sind-vv-bottom");};
+  const syncViewport=()=>{if(!window.visualViewport)return;const vv=window.visualViewport;document.documentElement.style.setProperty("--sind-vv-height",vv.height+"px");document.documentElement.style.setProperty("--sind-vv-bottom",Math.max(0,window.innerHeight-vv.height-vv.offsetTop)+"px");};
+  launch.addEventListener("click",()=>{panel.hidden=false;backdrop.hidden=false;launch.hidden=true;syncViewport();});
+  root.querySelector(".sind-chat-close").addEventListener("click",closeChat);
+  backdrop.addEventListener("click",closeChat);
+  if(window.visualViewport){window.visualViewport.addEventListener("resize",syncViewport);window.visualViewport.addEventListener("scroll",syncViewport);}
+  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!panel.hidden)closeChat();});
   const bubble=(txt,who="bot")=>{const e=document.createElement("div");e.className="sind-msg "+who;e.textContent=txt;messages.appendChild(e);scroll();return e;};
   const load=async()=>{
     if(docs)return docs;if(loading)return loading;
