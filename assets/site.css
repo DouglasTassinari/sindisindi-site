@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap');
-:root{--brand:#0789b7;--brand-dark:#006d98;--navy:#12364b;--ink:#173849;--muted:#657d89;--line:#dce8ed;--soft:#eff8fb;--paper:#fff;--shadow:0 18px 50px rgba(12,55,75,.09)}
+:root{--brand:#3A86B8;--brand-dark:#276F9E;--navy:#163E52;--ink:#254657;--muted:#647D89;--line:#dce8ed;--soft:#F1F7FA;--paper:#fff;--shadow:0 18px 50px rgba(12,55,75,.09)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fff;color:var(--ink);font-family:'DM Sans',Arial,sans-serif;line-height:1.65}a{color:inherit;text-decoration:none}img{max-width:100%}
 header{position:sticky!important;top:0;z-index:20;background:rgba(255,255,255,.96)!important;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)!important;padding:12px max(calc((100% - 1200px)/2),24px)!important;min-height:86px;display:flex;align-items:center;justify-content:space-between;gap:26px;box-shadow:0 3px 20px rgba(15,55,75,.04)}
-header .brand{display:block!important;width:310px;height:72px;flex:0 0 310px;background:url('assets/logo.svg') left center/contain no-repeat;font-size:0!important;line-height:0;overflow:hidden}
-header nav{display:flex;align-items:center;justify-content:flex-end;gap:clamp(10px,1.5vw,22px);font-size:13px!important;font-weight:700;color:#355568}
+header .brand{display:flex!important;align-items:center;width:310px;height:72px;flex:0 0 310px;background:transparent!important;font-size:0!important;line-height:0;overflow:hidden}
+header .brand img{display:block;width:100%;height:100%;object-fit:contain;object-position:left center}header nav{display:flex;align-items:center;justify-content:flex-end;gap:clamp(10px,1.5vw,22px);font-size:13px!important;font-weight:700;color:#355568}
 header nav a{padding:10px 0;position:relative}header nav a:hover{color:var(--brand)}header nav a:hover:after{content:'';position:absolute;bottom:2px;left:0;width:100%;height:2px;background:var(--brand)}
 .wrap{width:min(1200px,calc(100% - 48px));margin:auto}
 .hero{position:relative;overflow:hidden;background:linear-gradient(115deg,rgba(5,67,94,.96),rgba(7,137,183,.86)),url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1800&q=85') center/cover!important;color:#fff!important;padding:clamp(68px,9vw,122px) 0!important}
