@@ -74,6 +74,16 @@ def lastmod(page):
         return None
 
 
+PWA_HEAD = (
+    '<!-- @pwa --><link rel="manifest" href="manifest.webmanifest">'
+    '<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">'
+    '<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">'
+    '<meta name="theme-color" content="#0789b7">'
+    '<meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes">'
+    '<meta name="apple-mobile-web-app-title" content="SINDISINDI">'
+    '<meta name="apple-mobile-web-app-status-bar-style" content="default"><!-- @end pwa -->'
+)
+
 MESES = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho",
          "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
 
@@ -129,6 +139,10 @@ def main():
                 body = with_current(part, p.name) if a == HDR[0] else part
                 s = re.sub(re.escape(a) + r".*?" + re.escape(b), lambda m: f"{a}\n{body}\n{b}", s, flags=re.S)
         if p.name != "admin.html":
+            # app instalável (manifesto) e ícones com a logo do sindicato
+            s = re.sub(r"<!-- @pwa -->.*?<!-- @end pwa -->", "", s, flags=re.S)
+            s = re.sub(r'<meta name="theme-color"[^>]*>', "", s)
+            s = s.replace("</head>", PWA_HEAD + "</head>", 1)
             # polish.css sempre por último no <head>
             s = re.sub(r'<link rel="stylesheet" href="assets/polish\.css[^"]*">', "", s)
             s = s.replace("</head>", '<link rel="stylesheet" href="assets/polish.css"></head>', 1)
