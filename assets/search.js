@@ -106,9 +106,17 @@
  if(main&&!main.id){main.id="conteudo";main.tabIndex=-1;}
  const header=document.querySelector("header");
  const nav0=document.querySelector("header nav");if(nav0&&!nav0.id)nav0.id="main-navigation";
+ html.classList.add("js");
+ const hdr=document.querySelector("header:not(.site-header)"),tg=hdr&&hdr.querySelector(".menu-toggle");
+ if(tg&&nav0){
+  const setMenu=o=>{tg.setAttribute("aria-expanded",String(o));tg.setAttribute("aria-label",o?"Fechar menu":"Abrir menu");hdr.classList.toggle("menu-open",o);};
+  tg.addEventListener("click",()=>setMenu(tg.getAttribute("aria-expanded")!=="true"));
+  nav0.addEventListener("click",e=>{if(e.target.closest("a"))setMenu(false);});
+  document.addEventListener("keydown",e=>{if(e.key==="Escape")setMenu(false);});
+ }
  const bar=document.createElement("div");bar.className="gov-bar";
- bar.innerHTML='<div class="gov-links"><a href="#conteudo">Ir para o conteúdo <kbd>Alt+1</kbd></a><a href="#site-search-input">Ir para a busca <kbd>Alt+2</kbd></a><a href="#main-navigation">Ir para o menu <kbd>Alt+3</kbd></a></div>'+
-  '<div class="gov-tools" role="group" aria-label="Acessibilidade"><button type="button" data-a="dec" aria-label="Diminuir letras">A−</button><button type="button" data-a="inc" aria-label="Aumentar letras">A+</button><button type="button" data-a="hc" aria-pressed="false">Alto contraste</button><span class="gov-hours">Atendimento: seg. a qui. 8h–12h e 13h–17h · sex. 8h–12h</span><a href="https://wa.me/5551998843247" target="_blank" rel="noopener">WhatsApp (51) 99884-3247</a></div>';
+ bar.innerHTML='<a class="skip-link" href="#conteudo">Ir para o conteúdo</a><span class="gov-hours">Atendimento: seg. a qui. 8h–12h e 13h–17h · sex. 8h–12h</span>'+
+  '<div class="gov-tools" role="group" aria-label="Acessibilidade"><button type="button" data-a="dec" aria-label="Diminuir letras">A−</button><button type="button" data-a="inc" aria-label="Aumentar letras">A+</button><button type="button" data-a="hc" aria-pressed="false">Alto contraste</button></div>';
  const topline=document.querySelector(".topline");
  (topline||header).before(bar);
  let z=parseFloat(store.get("sindi_zoom")||"1")||1;
@@ -122,9 +130,6 @@
   if(a==="dec")z=Math.max(.9,+(z-.1).toFixed(2));
   if(a==="hc"){const on=!html.classList.contains("hc");html.classList.toggle("hc",on);btn.setAttribute("aria-pressed",on);store.set("sindi_hc",on?"1":"0");}
   else{store.set("sindi_zoom",String(z));applyZoom();}
- });
- document.addEventListener("keydown",e=>{
-  if(e.altKey&&["1","2","3"].includes(e.key)){e.preventDefault();const t={1:"#conteudo",2:"#site-search-input",3:"#main-navigation"}[e.key];const el=document.querySelector(t);if(el){el.scrollIntoView();if(el.focus)el.focus();}}
  });
  const h1=document.querySelector("main h1");
  if(h1&&!/(\/|index\.html)$/.test(location.pathname)){
@@ -177,10 +182,11 @@
  // Formulário de contato via WhatsApp
  const form=document.getElementById("contact-form");
  if(form){
+  form.noValidate=true;
   form.addEventListener("submit",e=>{
    e.preventDefault();
-   const nome=form.nome.value.trim(),msg=form.mensagem.value.trim(),err=form.querySelector(".cform-err");
-   if(!nome||!msg){err.hidden=false;(nome?form.mensagem:form.nome).focus();return;}
+   const nome=form.nome.value.trim(),msg=form.elements.text.value.trim(),err=form.querySelector(".cform-err");
+   if(!nome||!msg){err.hidden=false;(nome?form.elements.text:form.nome).focus();return;}
    err.hidden=true;
    const text="Olá, sou "+nome+".\nAssunto: "+form.assunto.value+"\n\n"+msg;
    window.open("https://wa.me/5551998843247?text="+encodeURIComponent(text),"_blank","noopener");
