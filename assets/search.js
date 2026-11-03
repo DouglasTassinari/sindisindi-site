@@ -4,9 +4,9 @@
  ];
  const form=document.getElementById("site-search-form"),input=document.getElementById("site-search-input"),out=document.getElementById("site-search-results");
  if(!form||!input||!out)return;
- const norm=s=>(s||"").normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").toLowerCase().replace(/[^a-z0-9 ]/g," ").replace(/\\s+/g," ").trim();
+ const norm=s=>(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9 ]/g," ").replace(/\s+/g," ").trim();
  let index;
- const load=()=>index||(index=Promise.all(pages.map(async([title,url])=>{try{const r=await fetch(url);if(!r.ok)throw 0;const d=new DOMParser().parseFromString(await r.text(),"text/html");d.querySelectorAll("script,style,nav,footer,header").forEach(n=>n.remove());return {title,url,text:(d.querySelector("main")||d.body).innerText.replace(/\\s+/g," ").trim()};}catch{return {title,url,text:""};}})));
+ const load=()=>index||(index=Promise.all(pages.map(async([title,url])=>{try{const r=await fetch(url);if(!r.ok)throw 0;const d=new DOMParser().parseFromString(await r.text(),"text/html");d.querySelectorAll("script,style,nav,footer,header").forEach(n=>n.remove());return {title,url,text:(d.querySelector("main")||d.body).innerText.replace(/\s+/g," ").trim()};}catch{return {title,url,text:""};}})));
  form.addEventListener("submit",async e=>{
   e.preventDefault();const q=norm(input.value);if(!q)return;out.replaceChildren();const status=document.createElement("p");status.className="search-status";status.textContent="Pesquisando no conteúdo do site…";out.append(status);
   const terms=q.split(" ").filter(t=>t.length>1);const data=await load();const results=data.map(d=>{const text=norm(d.title+" "+d.text);let score=0;for(const t of terms){const count=text.split(t).length-1;score+=Math.min(count,6)*(t.length>4?2:1);if(norm(d.title).includes(t))score+=5;}return {...d,score};}).filter(d=>d.text&&d.score>0).sort((a,b)=>b.score-a.score).slice(0,6);
