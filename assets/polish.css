@@ -127,3 +127,7 @@ html body header nav a.nav-cta:after,html body .main-nav a.nav-cta:after{display
  .card p,.news-card p{font-size:15px!important}
 }
 @media(prefers-reduced-motion:reduce){.quick-card,.offer-item,.menu-toggle span{transition:none}}
+
+/* ---------- Rodapé: espaço para os botões flutuantes (ajuda e WhatsApp) ---------- */
+html body footer{padding-bottom:130px!important}
+@media(max-width:700px){html body footer{padding-bottom:150px!important}}
