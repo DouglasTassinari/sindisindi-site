@@ -9,6 +9,4 @@
 .site-search-form button{border:0;background:var(--blue);color:#fff;padding:0 22px;font-weight:700;font-size:14px;cursor:pointer}.site-search-form button:hover{background:var(--navy)}.site-search-form button span{font-size:21px;vertical-align:-2px;margin-right:5px}
 .site-search-results{grid-column:2;display:grid;gap:8px;margin-top:10px}.search-result{background:#fff;border:1px solid var(--line);padding:12px 15px;border-left:3px solid var(--blue)}.search-result a{color:var(--navy);font-weight:700}.search-result p{margin:5px 0 0;font-size:12px;color:var(--muted)}.search-status{font-size:13px;color:var(--muted);margin:4px 0}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-/* No desktop: removemos os atalhos flutuantes que competem com a navegação. */
-@media(min-width:721px){#sind-assistant .sind-wa-float,#sind-assistant .sind-chat-launch{display:none!important}#sind-assistant .sind-chat-panel[hidden]{display:none!important}}
 @media(max-width:720px){.site-search{padding:24px 0}.search-inner{grid-template-columns:1fr;gap:14px}.site-search-results{grid-column:1}.site-search-form{min-height:50px}.site-search-form input{font-size:14px;padding:0 12px}.site-search-form button{padding:0 14px;font-size:13px}}
