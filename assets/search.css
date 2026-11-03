@@ -91,3 +91,15 @@ html.hc img{filter:grayscale(1) contrast(1.2)}
 .person b{display:block;color:#123d52;font-size:16px;line-height:1.35}
 .inst-h{margin:30px 0 4px;color:#123d52;font-size:20px}
 .inst-memo{margin-top:26px;padding:14px 18px;background:#f3f7f9;border-radius:10px;color:#3f5966}
+
+/* Horário de funcionamento */
+.gov-hours{background:#4CAF50;color:#04210a!important;font-weight:700;border-radius:20px;padding:3px 12px}
+.hours-band{background:#123d52;color:#fff;padding:18px 0}
+.hours-inner{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.hours-icon{font-size:38px;line-height:1;color:#7fd6f0}
+.hours-inner b{display:block;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#7fd6f0}
+.hours-inner p{margin:2px 0 0;font-size:clamp(16px,1.6vw,20px);color:#fff}
+.hours-inner strong{color:#fff}
+.hours-inner .button{margin-left:auto}
+.foot-hours{margin-top:10px;font-size:14px}
+html.hc .gov-hours{background:#000!important}

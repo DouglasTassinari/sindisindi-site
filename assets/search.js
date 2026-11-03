@@ -108,7 +108,7 @@
  const nav0=document.querySelector("header nav");if(nav0&&!nav0.id)nav0.id="main-navigation";
  const bar=document.createElement("div");bar.className="gov-bar";
  bar.innerHTML='<div class="gov-links"><a href="#conteudo">Ir para o conteúdo <kbd>Alt+1</kbd></a><a href="#site-search-input">Ir para a busca <kbd>Alt+2</kbd></a><a href="#main-navigation">Ir para o menu <kbd>Alt+3</kbd></a></div>'+
-  '<div class="gov-tools" role="group" aria-label="Acessibilidade"><button type="button" data-a="dec" aria-label="Diminuir letras">A−</button><button type="button" data-a="inc" aria-label="Aumentar letras">A+</button><button type="button" data-a="hc" aria-pressed="false">Alto contraste</button><a href="https://wa.me/5551998843247" target="_blank" rel="noopener">WhatsApp (51) 99884-3247</a></div>';
+  '<div class="gov-tools" role="group" aria-label="Acessibilidade"><button type="button" data-a="dec" aria-label="Diminuir letras">A−</button><button type="button" data-a="inc" aria-label="Aumentar letras">A+</button><button type="button" data-a="hc" aria-pressed="false">Alto contraste</button><span class="gov-hours">Atendimento: seg. a qui. 8h–12h e 13h–17h · sex. 8h–12h</span><a href="https://wa.me/5551998843247" target="_blank" rel="noopener">WhatsApp (51) 99884-3247</a></div>';
  const topline=document.querySelector(".topline");
  (topline||header).before(bar);
  let z=parseFloat(store.get("sindi_zoom")||"1")||1;
@@ -135,4 +135,13 @@
   nav.append(a1,sp,cur);
   const after=document.querySelector(".site-search");(after||header).after(nav);
  }
+})();
+
+// Horário de funcionamento no rodapé de todas as páginas
+(() => {
+ const f=document.querySelector("footer");if(!f||f.querySelector(".foot-hours"))return;
+ const box=f.querySelector(".wrap,.container")||f;
+ const p=document.createElement("p");p.className="foot-hours";
+ p.innerHTML="<strong>Horário de funcionamento:</strong> segunda a quinta, das 8h às 12h e das 13h às 17h · sexta, das 8h às 12h";
+ box.append(p);
 })();
